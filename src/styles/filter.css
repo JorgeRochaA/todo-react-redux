@@ -15,16 +15,11 @@
   min-width: 111px;
 }
 
+.filter-btn:hover {
+  background-color: #ddd;
+}
+
 .filter-btn.active {
   color: #fff;
   background-color: #0077ff;
-}
-
-.delete-btn {
-  color: #fff;
-  background-color: #ff0000;
-  border: none;
-  padding: 8px 16px;
-  margin-left: 8px;
-  border-radius: 4px;
 }
