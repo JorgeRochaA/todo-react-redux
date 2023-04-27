@@ -6,6 +6,7 @@ import type { RootState } from "../redux/store";
 import TodoForm from "../components/todo-form";
 import { useEffect } from "react";
 import { getTodos } from "../redux/features/todo/todoSlice";
+import Loader from "../components/loader";
 
 export default function TodoList() {
   const dispatch = useDispatch();
@@ -31,11 +32,17 @@ export default function TodoList() {
         </div>
         <div className="list-container">
           <h2>To-Do List</h2>
-          <div className="todos-container">
-            {todos.map((todo) => (
-              <Todo key={todo.id} {...todo} />
-            ))}
-          </div>
+          {status === "loading" ? (
+            <div className="loader-container">
+              <Loader />
+            </div>
+          ) : (
+            <div className="todos-container">
+              {todos.map((todo) => (
+                <Todo key={todo.id} {...todo} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </>
