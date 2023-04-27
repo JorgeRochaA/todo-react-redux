@@ -1,11 +1,14 @@
 .todo {
   display: flex;
   flex-direction: column;
+  white-space: nowrap;
+  width: 380px;
 }
 .todo-list li {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  white-space: nowrap;
 }
 
 .todo-list label {
@@ -64,6 +67,7 @@
 .actions {
   display: flex;
   gap: 10px;
+  margin-top: 10px;
 }
 
 button {
@@ -115,14 +119,10 @@ li.todo.completed {
   align-items: center;
 }
 
-.task-actions-container {
-  display: flex;
-  justify-content: space-between;
-  min-width: 100%;
-}
-
 .todo-description {
   text-align: start;
-  min-width: 100%;
-  margin-top: 2px;
+  margin-top: 5px;
+  max-width: 100%;
+  white-space: normal;
+  word-wrap: break-word;
 }

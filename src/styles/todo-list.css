@@ -1,9 +1,33 @@
 .todo-list {
-  max-width: 400px;
+  max-height: 850px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5%;
+  gap: 20px;
+}
+
+@media screen and (max-width: 900px) {
+  .todo-list {
+    flex-direction: column;
+    align-items: center;
+    max-height: fit-content;
+    max-width: 90vw;
+  }
+}
+
+.list-container {
+  width: 400px;
+}
+
+.todos-container {
+  max-height: 290px;
+  overflow: hidden;
+  overflow-y: auto;
+  white-space: nowrap;
 }
 
 .todo-list h2 {
@@ -26,4 +50,10 @@ h2 {
   flex-direction: column;
   gap: 15px;
   margin-top: 15px;
+}
+
+.message {
+  height: 400px;
+  display: grid;
+  place-items: center;
 }
