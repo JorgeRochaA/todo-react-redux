@@ -14,12 +14,8 @@ export default function TodoList() {
   );
 
   useEffect(() => {
-    dispatch(getTodos());
+    dispatch(getTodos(false));
   }, [dispatch]);
-
-  if (status === "loading") {
-    return <div>Loading...</div>;
-  }
 
   if (status === "failed") {
     return <div>Error: {error}</div>;
@@ -33,9 +29,7 @@ export default function TodoList() {
           <Filter />
           <TodoForm />
         </div>
-        <div
-className="list-container"
-        >
+        <div className="list-container">
           <h2>To-Do List</h2>
           <div className="todos-container">
             {todos.map((todo) => (

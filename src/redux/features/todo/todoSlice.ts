@@ -14,10 +14,19 @@ const initialState: TodoState = {
   error: null,
 };
 //******************************ACTIONS******************************
-export const getTodos = createAsyncThunk("todos/getTodos", async () => {
-  const response = await api.get("/todos/get-all");
-  return response.data.todos;
-});
+export const getTodos = createAsyncThunk(
+  "todos/getTodos",
+  async (filter?: boolean) => {
+    let response;
+    if (filter !== undefined) {
+      response = await api.get(`todos/get-all/?completed=${filter}`);
+    } else {
+      response = await api.get("/todos/get-all");
+    }
+
+    return response.data.todos;
+  }
+);
 //******************************SLICE******************************
 export const todoSlice = createSlice({
   name: "todo",

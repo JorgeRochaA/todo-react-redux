@@ -1,36 +1,40 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../styles/filter.css";
-import { useSelector } from "react-redux";
-import type { RootState } from "../redux/store";
+import { useDispatch } from "react-redux";
+import { getTodos } from "../redux/features/todo/todoSlice";
 
 export default function Filter() {
-  const todosLength = useSelector(
-    (state: RootState) => state.todo.todos.length
-  );
-  const [filter, setFilter] = useState("");
+  const dispatch = useDispatch();
+
+  const [filter, setFilter] = useState("active");
+
   const handleFilterChange = (value: string) => {
-    setFilter(value);
-  };
-  useEffect(() => {
-    if (todosLength) {
-      setFilter("all");
+    if (filter !== value) {
+      setFilter(value);
+      switch (value) {
+        case "all":
+          dispatch(getTodos());
+          break;
+        case "active":
+          dispatch(getTodos(false));
+          break;
+
+        case "completed":
+          dispatch(getTodos(true));
+          break;
+        default:
+          dispatch(getTodos(false));
+          break;
+      }
     }
-  }, []);
+  };
 
   return (
     <>
       <div className="filters">
         <button
-          className={filter === "all" ? "filter-btn active" : "filter-btn"}
-          onClick={() => handleFilterChange("all")}
-          disabled={!todosLength}
-        >
-          All
-        </button>
-        <button
           className={filter === "active" ? "filter-btn active" : "filter-btn"}
           onClick={() => handleFilterChange("active")}
-          disabled={!todosLength}
         >
           Active
         </button>
@@ -39,9 +43,14 @@ export default function Filter() {
             filter === "completed" ? "filter-btn active" : "filter-btn"
           }
           onClick={() => handleFilterChange("completed")}
-          disabled={!todosLength}
         >
           Completed
+        </button>
+        <button
+          className={filter === "all" ? "filter-btn active" : "filter-btn"}
+          onClick={() => handleFilterChange("all")}
+        >
+          All
         </button>
       </div>
     </>
