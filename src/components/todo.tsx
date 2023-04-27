@@ -5,12 +5,16 @@ export default function Todo(todo: TodoModel) {
     <>
       <li className="todo">
         <div className="checkbox-container">
-          <input type="checkbox" checked={todo.completed} />
+          <input type="checkbox" />
           <label htmlFor="task-name">{todo.title}</label>
         </div>
-        <div className="todo-description">{todo.description}</div>
+        <div className="todo-description">
+          {todo.description} <h1>{todo.completed}</h1>
+        </div>
         <div className="actions">
-          <button className="edit-btn">Edit Title</button>
+          {!todo.completed ? (
+            <button className="edit-btn">Edit Title</button>
+          ) : null}
           <button className="delete-btn">Delete</button>
         </div>
       </li>
