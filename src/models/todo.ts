@@ -4,6 +4,6 @@ export default interface Todo {
   description: string;
   completed: boolean;
   priority_index: number;
-  created_at: Date;
-  updated_at: Date;
+  created_at: string;
+  updated_at: string;
 }

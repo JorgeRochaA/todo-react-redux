@@ -1,13 +1,23 @@
-input[type="text"] {
+input[type="text"],
+textarea {
   padding: 10px;
   font-size: 16px;
   border-radius: 4px;
   border: 1px solid #ccc;
   width: 100%;
   box-sizing: border-box;
+  width: 379px;
+  max-width: 379px;
+  max-height: 87px;
 }
 
-input[type="text"]:focus {
+textarea {
+  min-height: 87px;
+  min-width: 100%;
+}
+
+input[type="text"]:focus,
+textarea:focus {
   outline: none;
   border-color: #3498db;
 }
