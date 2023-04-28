@@ -1,13 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { sendFormData } from "../redux/features/form/formSlice";
 import type { RootState } from "../redux/store";
 import "../styles/todo-form.css";
 
 export default function TodoForm() {
-  const { data, status, error } = useSelector(
-    (state: RootState) => state.todoForm
-  );
+  const { status, error } = useSelector((state: RootState) => state.todoForm);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     title: "",
@@ -24,6 +22,12 @@ export default function TodoForm() {
     dispatch(sendFormData(formData));
   };
 
+  useEffect(() => {
+    if (status === "succeeded") {
+      setFormData({ title: "", description: "" });
+    }
+  }, [status]);
+
   return (
     <>
       <h2>Add New Task Form</h2>
@@ -32,11 +36,13 @@ export default function TodoForm() {
           name="title"
           type="text"
           placeholder="Task Title"
+          value={formData.title}
           onChange={handleChange}
         />
         <textarea
           name="description"
           placeholder="Task Description"
+          value={formData.description}
           onChange={handleChange}
         />
         <button>Add Task</button>
