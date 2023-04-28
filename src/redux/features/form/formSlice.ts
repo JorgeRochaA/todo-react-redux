@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../../api/api";
-import Todo from "../../../models/todo";
 import { addTodo } from "../todo/todoSlice";
 
 export interface FormState {

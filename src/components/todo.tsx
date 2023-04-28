@@ -1,6 +1,13 @@
 import TodoModel from "../models/todo";
 import "../styles/todo.css";
+import { useDispatch } from "react-redux";
+import { deleteTodoAction } from "../redux/features/todo/todoSlice";
+
 export default function Todo(todo: TodoModel) {
+  const dispatch = useDispatch();
+  const handleDelete = () => {
+    dispatch(deleteTodoAction(todo.id));
+  };
   return (
     <>
       <li className="todo">
@@ -15,7 +22,9 @@ export default function Todo(todo: TodoModel) {
           {!todo.completed ? (
             <button className="edit-btn">Edit Title</button>
           ) : null}
-          <button className="delete-btn">Delete</button>
+          <button className="delete-btn" onClick={handleDelete}>
+            Delete
+          </button>
         </div>
       </li>
     </>
