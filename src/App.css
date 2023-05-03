@@ -5,3 +5,10 @@
   justify-content: center;
   align-items: center;
 }
+
+.error-message {
+  color: #ff6347; /* Red text color */
+  font-size: 13px; /* Font size */
+  font-weight: bold; /* Bold text */
+  font-family: Arial, sans-serif; /* Font family */
+}
