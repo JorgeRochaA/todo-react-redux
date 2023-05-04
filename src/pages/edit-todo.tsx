@@ -32,8 +32,17 @@ export default function EditTodo() {
 
   useEffect(() => {
     if (status === "succeeded") {
-      setValue("title", data.todo.title);
-      setValue("description", data.todo.description);
+      if (data.todo.completed) {
+        navigate("/");
+      } else {
+        setValue("title", data.todo.title);
+        setValue("description", data.todo.description);
+      }
+    }
+
+    if (status === "failed") {
+      console.log(error);
+      navigate("/");
     }
   }, [status]);
 
@@ -49,7 +58,7 @@ export default function EditTodo() {
       <div className="todo-list">
         <div>
           <h2>Edit Todo #{id}</h2>
-          {data ? (
+          {data && status === "succeeded" && (
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
                 type="text"
@@ -68,9 +77,8 @@ export default function EditTodo() {
               )}
               <button>Edit Todo</button>
             </form>
-          ) : (
-            <Loader />
           )}
+          {status === "loading" && <Loader />}
         </div>
       </div>
     </>
