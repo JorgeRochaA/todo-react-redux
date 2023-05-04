@@ -74,11 +74,20 @@ button {
   min-width: 101px;
 }
 
-button.edit-btn {
-  background-color: #3498db;
+.button-link {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  text-decoration: none;
 }
 
-button.edit-btn:hover {
+.edit-btn {
+  background-color: #3498db;
+  border-radius: 4px;
+}
+
+.button.edit-btn:hover {
   background-color: #2980b9;
 }
 

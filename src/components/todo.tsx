@@ -2,6 +2,7 @@ import TodoModel from "../models/todo";
 import "../styles/todo.css";
 import { useDispatch } from "react-redux";
 import { deleteTodoAction } from "../redux/features/todo/todoSlice";
+import { Link } from "react-router-dom";
 
 export default function Todo(todo: TodoModel) {
   const dispatch = useDispatch();
@@ -20,7 +21,11 @@ export default function Todo(todo: TodoModel) {
         </div>
         <div className="actions">
           {!todo.completed ? (
-            <button className="edit-btn">Edit Title</button>
+            <div className="edit-btn">
+              <Link className="button-link" to={`/todo/edit/${todo.id}`}>
+                Edit Todo
+              </Link>
+            </div>
           ) : null}
           <button className="delete-btn" onClick={handleDelete}>
             Delete

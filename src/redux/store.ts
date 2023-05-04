@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import TodoReducer from "./features/todo/todoSlice";
 import TodoFormReducer from "./features/form/formSlice";
+import EditTodoFormReducer from "./features/form/editTodoFormSlice";
 
 export const store = configureStore({
   reducer: {
     todo: TodoReducer,
     todoForm: TodoFormReducer,
+    editTodoForm: EditTodoFormReducer,
   },
 });
 
