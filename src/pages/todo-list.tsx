@@ -7,6 +7,7 @@ import TodoForm from "../components/todo-form";
 import { useEffect } from "react";
 import { getTodos } from "../redux/features/todo/todoSlice";
 import Loader from "../components/loader";
+import ErrorBanner from "../components/error-banner";
 
 export default function TodoList() {
   const dispatch = useDispatch();
@@ -18,8 +19,8 @@ export default function TodoList() {
     dispatch(getTodos(false));
   }, [dispatch]);
 
-  if (status === "failed") {
-    return <div>Error: {error}</div>;
+  if (status === "failed" && error) {
+    return <ErrorBanner error={error} />;
   }
 
   return (

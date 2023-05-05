@@ -1,0 +1,22 @@
+.error-banner {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  border: 2px solid #f5c6cb;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  min-width: 300px; /* add this line to set the width to 100% */
+  max-width: 95%;
+  box-sizing: border-box; /* add this line to include padding and border in the width */
+  display: grid;
+  place-content: center;
+  font-family: Arial, sans-serif; /* add this line to set the font family */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: translateY(-50%);
+}

@@ -19,7 +19,7 @@ const initialState: FormState = {
 export const sendFormData = createAsyncThunk(
   "data/fetchData",
   async (params, { dispatch }) => {
-    const response = await api.post("/todos/create", { params });
+    const response = await api.post("/todos/create", params);
     dispatch(addTodo(response.data.todo));
     return response.data;
   }
@@ -40,6 +40,7 @@ export const todoSlice = createSlice({
       })
       .addCase(sendFormData.rejected, (state, action) => {
         state.status = "failed";
+        console.log(action);
         state.error = action.error.message;
       });
   },
