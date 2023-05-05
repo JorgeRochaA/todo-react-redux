@@ -23,7 +23,6 @@ export const getTodos = createAsyncThunk(
     } else {
       response = await api.get("/todos/get-all");
     }
-
     return response.data.todos;
   }
 );

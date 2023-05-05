@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import TodoReducer from "./features/todo/todoSlice";
 import TodoFormReducer from "./features/form/formSlice";
 import EditTodoFormReducer from "./features/form/editTodoFormSlice";
+import markAsCompletedReducer from "./features/todo/mark-as-completed";
 
 export const store = configureStore({
   reducer: {
     todo: TodoReducer,
     todoForm: TodoFormReducer,
     editTodoForm: EditTodoFormReducer,
+    markAsCompleted: markAsCompletedReducer,
   },
 });
 
